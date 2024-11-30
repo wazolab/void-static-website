@@ -1,4 +1,4 @@
-# Low-Tech Lab - Grenoble
+# Low-tech Lab - Grenoble
 
 ## Local Development
 

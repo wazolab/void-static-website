@@ -1,5 +1,5 @@
 <?php 
-$sitename = "SomeWebsite";
+$sitename = "Low-tech Lab - Grenoble";
 $blogpagename = "blog";
 
 error_reporting(0);
@@ -36,7 +36,7 @@ if (!$pageurl) { $pageurl = pathinfo($page)['filename']; }
 </head>
 <body>
 <div class="header">
-  <div class="logo"><a href="."><?php echo $sitename;?></a></div>
+  <div class="logo"><a href="/"><?php echo $sitename;?></a></div>
   <ul class="menu">
     <?php
     $pages = glob("./page/*.{txt,md}", GLOB_BRACE);
@@ -47,6 +47,8 @@ if (!$pageurl) { $pageurl = pathinfo($page)['filename']; }
     }
     ?>
   </ul>
+  <!-- Theme Toggle Button -->
+  <button id="theme-toggle" class="theme-toggle">🌙</button>
 </div>
 <div class="main">
 
@@ -82,5 +84,6 @@ if ($requestedpage === $blogpagename)
   <div class="left"><a href="">© <?php echo date('Y') . " " . $sitename; ?></a></div>
   <div class="right">Powered by <a href="https://github.com/josephernest/void">Void</a>.</div>
 </div>
+<script src="/assets/theme-toggle.js"></script>
 </body>
 </html>
