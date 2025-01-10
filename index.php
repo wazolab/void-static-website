@@ -81,7 +81,7 @@ if ($requestedpage === $blogpagename)
 ?>
 </div>
 <div class="footer">
-  <div class="left"><a href="">© <?php echo date('Y') . " " . $sitename; ?></a></div>
+  <div class="left"><a href="/">© <?php echo date('Y') . " " . $sitename; ?></a></div>
   <div class="right">Powered by <a href="https://github.com/josephernest/void">Void</a>.</div>
 </div>
 <script src="/assets/theme-toggle.js"></script>

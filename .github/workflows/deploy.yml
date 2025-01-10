@@ -1,0 +1,45 @@
+name: Deploy Static PHP Site
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write 
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up PHP (optional if your site needs specific PHP extensions)
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'  # Use the PHP version your site requires
+
+    # Step 3: Start a PHP server
+    - name: Start PHP server
+      run: php -S localhost:8000 > /dev/null 2>&1 &
+
+    # Step 4: Wait for the server to start
+    - name: Wait for server
+      run: sleep 5
+
+    # Step 5: Use wget to generate static files
+    - name: Generate static files
+      run: |
+        mkdir static_site
+        wget --mirror --convert-links --adjust-extension --page-requisites --no-parent --reject-regex '/article.*|.*@.*\..*' --no-host-directories http://localhost:8000 -P static_site
+
+    # Step 6: Deploy to GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./static_site

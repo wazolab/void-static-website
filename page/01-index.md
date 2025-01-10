@@ -1,5 +1,5 @@
 TITLE:Accueil
-NOMENU:1
+<!-- NOMENU:1 -->
 
 ![Logo du Low-tech Lab de Grenoble](/assets/brand.jpg)
 ![Photo de l'équipe ?]()
